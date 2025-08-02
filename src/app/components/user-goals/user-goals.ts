@@ -67,11 +67,6 @@ export class UserGoalsComponent {
         // Reset form
         this.userGoalsForm.reset();
 
-        // Auto-hide modal after 3 seconds and navigate to home
-        setTimeout(() => {
-          this.closeModalAndNavigate();
-        }, 3000);
-
         // You can redirect to a dashboard or learning page here
         // this.router.navigate(['/dashboard']);
       } catch (error) {
