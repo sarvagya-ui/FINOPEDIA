@@ -1,1 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
+@use 'bootstrap/scss/bootstrap' as bootstrap;
+
+:root {
+  --primary-color: #007bff;
+  --secondary-color: #0056b3;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}

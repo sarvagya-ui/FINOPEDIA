@@ -1,0 +1,129 @@
+.header-button-demo {
+  font-size: 0.85rem;
+}
+
+.card {
+  transition: transform 0.3s ease;
+  margin-bottom: 20px;
+
+  &:hover {
+    transform: translateY(-5px);
+  }
+}
+
+.bg-primary {
+  background: linear-gradient(45deg, #007bff, #0056b3) !important;
+}
+
+// Hero Section Styles
+.hero-section {
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  min-height: 18rem;
+
+  .hero-content {
+    padding: 0 1rem;
+
+    .hero-title {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #2c3e50;
+      margin-bottom: 0.75rem;
+      line-height: 1.2;
+    }
+
+    .hero-description {
+      font-size: 1rem;
+      color: #6c757d;
+      margin-bottom: 1.5rem;
+      line-height: 1.5;
+    }
+
+    .hero-cta {
+      padding: 0.6rem 1.5rem;
+      font-weight: 600;
+      border-radius: 2rem;
+      transition: all 0.3s ease;
+
+      &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 0.5rem 1rem rgba(0, 123, 255, 0.3);
+      }
+    }
+  }
+
+  .teacher-image-container {
+    position: relative;
+    max-width: 400px;
+    margin: 0 auto;
+
+    .teacher-image {
+      max-width: 100%;
+      height: auto;
+      border-radius: 0.75rem;
+      box-shadow: 0 0.75rem 1.5rem rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+
+      &:hover {
+        transform: scale(1.02);
+      }
+    }
+  }
+}
+
+// Responsive adjustments
+@media (max-width: 991.98px) {
+  .hero-section {
+    min-height: 16rem;
+
+    .hero-content {
+      text-align: center;
+      margin-bottom: 1.5rem;
+
+      .hero-title {
+        font-size: 1.75rem;
+      }
+
+      .hero-description {
+        font-size: 0.95rem;
+      }
+    }
+
+    .teacher-image-container {
+      margin-top: 0.75rem;
+      max-width: 350px;
+
+      .teacher-image {
+        max-width: 100%;
+      }
+    }
+  }
+}
+
+@media (max-width: 575.98px) {
+  .hero-section {
+    min-height: 14rem;
+
+    .hero-content {
+      .hero-title {
+        font-size: 1.5rem;
+      }
+
+      .hero-description {
+        font-size: 0.9rem;
+      }
+
+      .hero-cta {
+        padding: 0.5rem 1.25rem;
+        font-size: 0.85rem;
+      }
+    }
+
+    .teacher-image-container {
+      max-width: 280px;
+
+      .teacher-image {
+        max-width: 100%;
+      }
+    }
+  }
+}
