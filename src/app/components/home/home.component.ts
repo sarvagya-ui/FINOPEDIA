@@ -1,15 +1,16 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Router, RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterOutlet],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent {
-  constructor() { }
+  constructor(private router: Router) { }
 
   /**
    * Opens WhatsApp with a pre-filled message for demo requests
@@ -26,5 +27,19 @@ export class HomeComponent {
 
     // Open WhatsApp in a new tab/window
     window.open(whatsappUrl, '_blank');
+  }
+
+  /**
+   * Navigates to the user goals page
+   */
+  startLearning(): void {
+    this.router.navigate(['/home/user-goals']);
+  }
+
+  /**
+   * Checks if current route is home route
+   */
+  isHomeRoute(): boolean {
+    return this.router.url === '/home' || this.router.url === '/';
   }
 }

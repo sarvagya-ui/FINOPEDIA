@@ -10,8 +10,11 @@
     </div>
   </div>
 
-  <!-- Hero Section with Teacher Image -->
-  <div class="row hero-section py-4">
+  <!-- Router Outlet for dynamic content -->
+  <router-outlet></router-outlet>
+
+  <!-- Hero Section with Teacher Image (only show when on home route) -->
+  <div class="row hero-section py-4" *ngIf="isHomeRoute()">
     <div class="col-lg-6 d-flex align-items-center">
       <div class="hero-content">
         <h2 class="hero-title">Learn from Financial Experts</h2>
@@ -19,7 +22,7 @@
           Get personalized financial education from industry professionals.
           Our expert teachers guide you through every step of your financial journey.
         </p>
-        <button class="btn btn-primary btn-lg hero-cta">Start Learning Today</button>
+        <button class="btn btn-primary btn-lg hero-cta" (click)="startLearning()">Start Learning Today</button>
       </div>
     </div>
     <div class="col-lg-6 d-flex justify-content-center align-items-center">
@@ -29,8 +32,8 @@
     </div>
   </div>
 
-  <!-- Features Section -->
-  <div class="row py-5">
+  <!-- Features Section (only show when on home route) -->
+  <div class="row py-5" *ngIf="isHomeRoute()">
     <div class="col-md-4 mb-1">
       <div class="card h-100">
         <div class="card-body">

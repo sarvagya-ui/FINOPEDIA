@@ -1,0 +1,194 @@
+<!-- Success Modal -->
+<div class="modal fade" [class.show]="showSuccessModal" [style.display]="showSuccessModal ? 'block' : 'none'"
+  tabindex="-1" role="dialog" aria-labelledby="successModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content border-0 shadow-lg">
+      <div class="modal-header bg-success text-white border-0">
+        <h5 class="modal-title" id="successModalLabel">
+          <i class="bi bi-check-circle-fill me-2"></i>
+          🎉 Success!
+        </h5>
+        <button type="button" class="btn-close btn-close-white" (click)="closeModalAndNavigate()"
+          aria-label="Close"></button>
+      </div>
+      <div class="modal-body text-center p-4">
+        <div class="mb-4">
+          <i class="bi bi-check-circle-fill text-success" style="font-size: 4rem;"></i>
+        </div>
+        <h4 class="mb-3">Fantastic! We've Got Your Details!</h4>
+        <p class="mb-3">Thank you for reaching out to Finopedia! We've successfully received your information and we're
+          excited to help you on your financial education journey.</p>
+        <p class="mb-0"><strong>What's Next?</strong> Our team will review your goals and get in touch with you shortly
+          to create your personalized learning experience!</p>
+      </div>
+      <div class="modal-footer border-0 justify-content-center">
+        <button type="button" class="btn btn-success btn-lg px-4" (click)="closeModalAndNavigate()">
+          <i class="bi bi-house-fill me-2"></i>
+          Return to Home
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Backdrop -->
+<div class="modal-backdrop fade" [class.show]="showSuccessModal" *ngIf="showSuccessModal"></div>
+
+<!-- User Goals Form Section -->
+<div class="row py-5">
+  <div class="col-lg-8 mx-auto">
+    <div class="card shadow">
+      <div class="card-header bg-primary text-white">
+        <h2 class="mb-0">Tell Us About Your Financial Goals</h2>
+        <p class="mb-0 mt-2">Help us personalize your learning experience</p>
+      </div>
+      <div class="card-body p-4">
+        <form [formGroup]="userGoalsForm" (ngSubmit)="onSubmit()">
+          <!-- Personal Information -->
+          <div class="row mb-4">
+            <div class="col-md-6">
+              <label for="firstName" class="form-label">First Name *</label>
+              <input type="text" class="form-control" id="firstName" formControlName="firstName"
+                placeholder="Enter your first name">
+              <div *ngIf="userGoalsForm.get('firstName')?.invalid && userGoalsForm.get('firstName')?.touched"
+                class="text-danger small mt-1">
+                First name is required
+              </div>
+            </div>
+            <div class="col-md-6">
+              <label for="lastName" class="form-label">Last Name *</label>
+              <input type="text" class="form-control" id="lastName" formControlName="lastName"
+                placeholder="Enter your last name">
+              <div *ngIf="userGoalsForm.get('lastName')?.invalid && userGoalsForm.get('lastName')?.touched"
+                class="text-danger small mt-1">
+                Last name is required
+              </div>
+            </div>
+          </div>
+
+          <div class="row mb-4">
+            <div class="col-md-6">
+              <label for="email" class="form-label">Email Address *</label>
+              <input type="email" class="form-control" id="email" formControlName="email"
+                placeholder="Enter your email">
+              <div *ngIf="userGoalsForm.get('email')?.invalid && userGoalsForm.get('email')?.touched"
+                class="text-danger small mt-1">
+                Please enter a valid email address
+              </div>
+            </div>
+            <div class="col-md-6">
+              <label for="phone" class="form-label">Phone Number</label>
+              <input type="tel" class="form-control" id="phone" formControlName="phone"
+                placeholder="Enter your phone number">
+            </div>
+          </div>
+
+          <!-- Financial Goals -->
+          <div class="mb-4">
+            <label class="form-label">What are your primary financial goals? *</label>
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-check mb-2">
+                  <input class="form-check-input" type="checkbox" id="goal1"
+                    (change)="onGoalChange('investment', $event)" [checked]="isGoalSelected('investment')">
+                  <label class="form-check-label" for="goal1">
+                    Investment Planning
+                  </label>
+                </div>
+                <div class="form-check mb-2">
+                  <input class="form-check-input" type="checkbox" id="goal2"
+                    (change)="onGoalChange('retirement', $event)" [checked]="isGoalSelected('retirement')">
+                  <label class="form-check-label" for="goal2">
+                    Retirement Planning
+                  </label>
+                </div>
+                <div class="form-check mb-2">
+                  <input class="form-check-input" type="checkbox" id="goal3" (change)="onGoalChange('trading', $event)"
+                    [checked]="isGoalSelected('trading')">
+                  <label class="form-check-label" for="goal3">
+                    Stock Trading
+                  </label>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-check mb-2">
+                  <input class="form-check-input" type="checkbox" id="goal4"
+                    (change)="onGoalChange('budgeting', $event)" [checked]="isGoalSelected('budgeting')">
+                  <label class="form-check-label" for="goal4">
+                    Budgeting & Saving
+                  </label>
+                </div>
+                <div class="form-check mb-2">
+                  <input class="form-check-input" type="checkbox" id="goal5" (change)="onGoalChange('tax', $event)"
+                    [checked]="isGoalSelected('tax')">
+                  <label class="form-check-label" for="goal5">
+                    Tax Planning
+                  </label>
+                </div>
+                <div class="form-check mb-2">
+                  <input class="form-check-input" type="checkbox" id="goal6" (change)="onGoalChange('business', $event)"
+                    [checked]="isGoalSelected('business')">
+                  <label class="form-check-label" for="goal6">
+                    Business Finance
+                  </label>
+                </div>
+              </div>
+            </div>
+            <div *ngIf="!hasSelectedGoals() && userGoalsForm.get('goals')?.touched" class="text-danger small mt-1">
+              Please select at least one financial goal
+            </div>
+          </div>
+
+          <!-- Experience Level -->
+          <div class="mb-4">
+            <label for="experienceLevel" class="form-label">What's your current financial knowledge
+              level? *</label>
+            <select class="form-select position-relative" id="experienceLevel" formControlName="experienceLevel">
+              <option value="">Select your experience level</option>
+              <option value="beginner">Beginner - New to financial planning</option>
+              <option value="intermediate">Intermediate - Some knowledge but want to improve</option>
+              <option value="advanced">Advanced - Experienced but want to specialize</option>
+            </select>
+            <div *ngIf="userGoalsForm.get('experienceLevel')?.invalid && userGoalsForm.get('experienceLevel')?.touched"
+              class="text-danger small mt-1">
+              Please select your experience level
+            </div>
+          </div>
+
+          <!-- Time Commitment -->
+          <div class="mb-4">
+            <label for="timeCommitment" class="form-label">How much time can you dedicate to learning?
+              *</label>
+            <select class="form-select position-relative" id="timeCommitment" formControlName="timeCommitment">
+              <option value="">Select time commitment</option>
+              <option value="1-2">1-2 hours per week</option>
+              <option value="3-5">3-5 hours per week</option>
+              <option value="6-10">6-10 hours per week</option>
+              <option value="10+">More than 10 hours per week</option>
+            </select>
+            <div *ngIf="userGoalsForm.get('timeCommitment')?.invalid && userGoalsForm.get('timeCommitment')?.touched"
+              class="text-danger small mt-1">
+              Please select your time commitment
+            </div>
+          </div>
+
+          <!-- Additional Information -->
+          <div class="mb-4">
+            <label for="additionalInfo" class="form-label">Any specific areas you'd like to focus
+              on?</label>
+            <textarea class="form-control" id="additionalInfo" formControlName="additionalInfo" rows="3"
+              placeholder="Tell us about any specific financial topics, challenges, or goals you have..."></textarea>
+          </div>
+
+          <!-- Submit Buttons -->
+          <div class="d-flex justify-content-center">
+            <button type="submit" class="btn btn-primary btn-sm" [disabled]="userGoalsForm.invalid">
+              <i class="bi bi-send"></i>
+              Submit & Start Learning
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
