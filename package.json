@@ -26,6 +26,7 @@
     "@angular/forms": "^20.1.0",
     "@angular/platform-browser": "^20.1.0",
     "@angular/router": "^20.1.0",
+    "@angular/service-worker": "^20.1.4",
     "@emailjs/browser": "^4.4.1",
     "@popperjs/core": "^2.11.8",
     "bootstrap": "^5.3.7",
