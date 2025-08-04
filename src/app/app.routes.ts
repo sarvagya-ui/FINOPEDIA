@@ -1,6 +1,7 @@
 import { Routes } from '@angular/router';
 import { HomeComponent } from './components/home/home.component';
 import { UserGoalsComponent } from './components/user-goals/user-goals';
+import { AuthComponent } from './components/auth/auth.component';
 
 export const routes: Routes = [
     {
@@ -10,6 +11,7 @@ export const routes: Routes = [
             { path: 'user-goals', component: UserGoalsComponent }
         ]
     },
+    { path: 'auth', component: AuthComponent },
     { path: 'user-goals', redirectTo: '/home/user-goals', pathMatch: 'full' },
     { path: '', redirectTo: '/home', pathMatch: 'full' }
 ];

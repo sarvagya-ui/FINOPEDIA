@@ -1,0 +1,85 @@
+<div class="container-fluid">
+    <!-- Header Section -->
+    <div class="row bg-primary text-white py-3">
+        <div class="col-12">
+            <div class="d-flex justify-content-between align-items-center">
+                <h1 class="display-4 mb-0">Finopedia</h1>
+                <button class="btn btn-light btn-lg" (click)="goBack()">Back to Home</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Auth Form Section -->
+    <div class="row justify-content-center py-5">
+        <div class="col-md-6 col-lg-4">
+            <div class="auth-card">
+                <div class="auth-header">
+                    <h2 class="auth-title">{{ isSignUp ? 'Create Account' : 'Sign In' }}</h2>
+                    <p class="auth-subtitle">
+                        {{ isSignUp ? 'Join Finopedia to start your financial education journey' : 'Welcome back! Sign
+                        in to continue' }}
+                    </p>
+                </div>
+
+                <form (ngSubmit)="onSubmit()" class="auth-form">
+                    <div class="form-group mb-3">
+                        <label for="email" class="form-label">Email Address</label>
+                        <input type="email" class="form-control" id="email" placeholder="Enter your email" required>
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label for="password" class="form-label">Password</label>
+                        <input type="password" class="form-control" id="password" placeholder="Enter your password"
+                            required>
+                    </div>
+
+                    <div class="form-group mb-3" *ngIf="isSignUp">
+                        <label for="confirmPassword" class="form-label">Confirm Password</label>
+                        <input type="password" class="form-control" id="confirmPassword"
+                            placeholder="Confirm your password" required>
+                    </div>
+
+                    <div class="form-group mb-3" *ngIf="isSignUp">
+                        <label for="fullName" class="form-label">Full Name</label>
+                        <input type="text" class="form-control" id="fullName" placeholder="Enter your full name"
+                            required>
+                    </div>
+
+                    <div class="form-check mb-3" *ngIf="isSignUp">
+                        <input class="form-check-input" type="checkbox" id="terms" required>
+                        <label class="form-check-label" for="terms">
+                            I agree to the <a href="#" class="text-primary">Terms of Service</a> and <a href="#"
+                                class="text-primary">Privacy Policy</a>
+                        </label>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary w-100 mb-3 auth-submit-btn">
+                        {{ isSignUp ? 'Create Account' : 'Sign In' }}
+                    </button>
+
+                    <div class="text-center">
+                        <p class="mb-0">
+                            {{ isSignUp ? 'Already have an account?' : "Don't have an account?" }}
+                            <a href="#" class="text-primary" (click)="toggleMode()">
+                                {{ isSignUp ? 'Sign In' : 'Sign Up' }}
+                            </a>
+                        </p>
+                    </div>
+                </form>
+
+                <div class="auth-divider">
+                    <span>or</span>
+                </div>
+
+                <div class="social-auth">
+                    <button class="btn btn-outline-secondary w-100 mb-2">
+                        <i class="bi bi-google"></i> Continue with Google
+                    </button>
+                    <button class="btn btn-outline-secondary w-100">
+                        <i class="bi bi-facebook"></i> Continue with Facebook
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

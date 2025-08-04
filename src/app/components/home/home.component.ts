@@ -30,6 +30,14 @@ export class HomeComponent {
   }
 
   /**
+   * Opens sign-up/sign-in functionality
+   */
+  openSignUp(): void {
+    // Navigate to the auth component
+    this.router.navigate(['/auth']);
+  }
+
+  /**
    * Navigates to the user goals page
    */
   startLearning(): void {
