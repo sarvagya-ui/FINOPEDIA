@@ -32,6 +32,15 @@
   }
 }
 
+.toggle-link {
+  cursor: pointer;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
 .auth-form {
   .form-label {
     font-weight: 600;
